@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Proyecto_DSWI_2024.Models.Cliente>
+
+@{
+    ViewData["Title"] = "ListarClientes";
+}
+
+<h1>ListarClientes</h1>
+
+<p>
+    <a asp-action="CrearCliente">Crear Nuevo Cliente</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                    @Html.ActionLink("Editar", "EditarCliente", new { id = item.IdCliente }) |
+                @Html.ActionLink("Details", "Details", new {  id=item.IdCliente  }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.IdCliente  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
